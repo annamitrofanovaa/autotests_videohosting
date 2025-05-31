@@ -21,7 +21,6 @@ public class VideoPageTest extends BaseTest {
     void shouldDisplayAllVideoPageElements() {
         System.out.println("[Test] 🔍 Открываем страницу видео");
 
-        // 👉 Заменить на актуальный URL видео
         open("https://frontend-test.dev.dion.vc/video/a858c10d-afb9-462b-8b16-ffa49edc4182");
 
         VideoPage videoPage = new VideoPage();
@@ -30,7 +29,7 @@ public class VideoPageTest extends BaseTest {
         videoPage.checkVideoLoaded();
 
         System.out.println("[Test] ✅ Проверка заголовка видео");
-        videoPage.checkTitle("videotest"); // при необходимости замени на свой заголовок
+        videoPage.checkTitle("videotest"); 
 
         System.out.println("[Test] ✅ Проверка кнопки 'Нравится'");
         videoPage.likeVideo();

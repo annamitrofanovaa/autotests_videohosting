@@ -24,22 +24,16 @@ public class LoginPage {
 
     @Step("Выполняем логин с предустановленными данными")
     public void login() {
-        //System.out.println("⏳ Начинаю логин...");
     
         emailInput.shouldBe(visible, Duration.ofSeconds(10)).setValue("anyatest@inno.tech");
-        //System.out.println("✅ Email введён");
     
         loginButton.shouldBe(visible).click();
-        //System.out.println("✅ Нажата кнопка 'Войти'");
     
         passwordInput.shouldBe(visible, Duration.ofSeconds(10)).setValue("Anna1243)");
-        //System.out.println("✅ Пароль введён");
     
         submitButton.shouldBe(visible).click();
-        //System.out.println("✅ Вход подтверждён");
     
         sleep(3000);
-        //System.out.println("✅ Подождали немного после входа");
     }
     
     @Step("Проверяем успешность логина")

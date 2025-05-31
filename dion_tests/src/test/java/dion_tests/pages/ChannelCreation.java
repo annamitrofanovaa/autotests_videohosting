@@ -17,7 +17,6 @@ import static com.codeborne.selenide.Selectors.byText;
 public class ChannelCreation {
 
     public void open(String url) {
-        //open(url);
         com.codeborne.selenide.Selenide.open(url);
     }
     public void openChannelsPage() {
@@ -28,10 +27,8 @@ public class ChannelCreation {
     public void uploadChannelImage() {
         System.out.println("🖼 Загружаем изображение канала");
 
-        // Указываем путь к картинке
         File image = new File("C:/Dion_tests/dion_tests/test_img/1.jpg");
 
-        // Ищем настоящий input[type='file'] и загружаем
         $("input[type='file']").uploadFile(image);
         $(byText("Сохранить")).closest("button").click();
         System.out.println("✅ Фото загружено");
@@ -61,7 +58,6 @@ public class ChannelCreation {
         $(By.xpath("//button[.='Далее']")).shouldBe(visible).click();
         Selenide.sleep(2000);
     
-        // Теперь выбираем доступ, который передал тест
         selectAccessType(accessType);
     
         SelenideElement finalCreateButton = $(By.xpath("//button[.//span[text()='Создать канал']]"));
@@ -77,16 +73,12 @@ public class ChannelCreation {
     public void selectUsers() {
         System.out.println("👥 Выбираем пользователей");
     
-        // Открыть модалку
         $(byText("Добавить пользователей")).shouldBe(visible).click();
     
-        // Вводим имя в поле поиска
         $("input[placeholder='Поиск']").shouldBe(visible).setValue("Anna");
     
-        // Ждём, пока появится чекбокс для пользователя и кликаем
         $("input[type='checkbox']").parent().click();
     
-        // Ждём, пока кнопка "Добавить" станет активной и жмём её
         $(byText("Добавить")).shouldBe(enabled).click();
     
         System.out.println("✅ Пользователь выбран и добавлен");
@@ -103,7 +95,7 @@ public class ChannelCreation {
             $(byText(type)).shouldBe(visible).click();
             $("[role='combobox']").shouldHave(text(type));
             if (type.equals("Доступен выбранным пользователям")) {
-                selectUsers(); // вызов метода, который должен быть реализован ниже
+                selectUsers(); 
             }
         }
 

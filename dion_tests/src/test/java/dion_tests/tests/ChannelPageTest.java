@@ -14,16 +14,12 @@ import com.codeborne.selenide.Configuration;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ChannelPageTest extends BaseTest {
     private final ChannelPage channelPage = new ChannelPage();
-    //private static final String CHANNEL_URL = "https://frontend-test.dev.dion.vc/video/channel/5eb3aaaf-6ba0-470b-8275-47f0f96cd663";
 
     @Test
     @Disabled
     @Order(1)
     public void shouldOpenChannelPage() {
-        /*System.out.println("🚀 [Test] ➤ Запускается: shouldOpenChannelPage");
 
-        //ChannelPage channelPage = new ChannelPage();
-        //channelPage.open(CHANNEL_URL);
         channelPage.open("https://frontend-test.dev.dion.vc/video/channel/bbf7720c-09e2-4385-a0dd-3116c90af7a0");
 
         System.out.println("🌐 [Test] ➤ Канал открыт, проверяем заголовок...");
@@ -42,9 +38,6 @@ public class ChannelPageTest extends BaseTest {
     public void shouldSubscribeSuccessfully() {
         System.out.println("🚀 [Test] ➤ Запускается: shouldSubscribeSuccessfully");
 
-        //ChannelPage channelPage = new ChannelPage();
-        //String channelUrl = "https://frontend-test.dev.dion.vc/video/channel/bbf7720c-09e2-4385-a0dd-3116c90af7a0";
-        //channelPage.open(channelUrl);
         channelPage.open("https://frontend-test.dev.dion.vc/video/channel/bbf7720c-09e2-4385-a0dd-3116c90af7a0");
 
 
@@ -72,10 +65,8 @@ public class ChannelPageTest extends BaseTest {
     public void shouldCreateChannelDraftSuccessfully() {
         System.out.println("[Test] Запускается: shouldCreateChannelDraftSuccessfully");
 
-        //channelPage.createChannelDraft("Тестовый канал Testikll", "Описание канала");
         String channelName = "ТЕСТ" + new Random().nextInt(10000); // например: ТЕСТ5678
         channelPage.createChannelDraft(channelName, "Описание канала");
-        //channelPage.verifyAccessStepVisible();
         Configuration.timeout = 10000;
         System.out.println("[Test] Черновик канала успешно создан и шаг 'Доступы и модераторы' доступен");
     }
@@ -86,13 +77,11 @@ public class ChannelPageTest extends BaseTest {
     public void shouldEditChannelSuccessfully() {
         System.out.println("[Test] Запускается: shouldEditChannelSuccessfully");
 
-        // 1. Создание канала (чтобы он точно существовал)
         String channelName = "ТЕСТ" + new Random().nextInt(10000);
         String channelDescription = "Описание для создания канала";
         channelPage.createChannelDraft(channelName, channelDescription);
         Configuration.timeout = 10000;
 
-        // 2. Теперь редактируем канал
         String bannerFilePath = "C:/Dion_tests/dion_tests/test_img/1.jpg"; // путь до новой обложки
         channelPage.editChannelAndChangeBanner(bannerFilePath);
 

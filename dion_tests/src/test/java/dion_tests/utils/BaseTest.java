@@ -33,7 +33,6 @@ public class BaseTest {
     public void setUp(TestInfo testInfo) {
         System.out.println("🔥 [BaseTest] ➤ setUp вызван для теста: " + testInfo.getDisplayName());
         System.out.println("[BaseTest] setUp начался");
-        // 1) Регистрируем Allure-Selenide-лисенер
         SelenideLogger.addListener("AllureSelenide", 
             new AllureSelenide()
                 .screenshots(true)     
@@ -43,14 +42,11 @@ public class BaseTest {
 
 
         
-        // 🔐 Запуск Chrome с реальным кэшем и пользовательским профилем
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-data-dir=C:/temp/test-profile");
-//options.addArguments("user-data-dir=C:/Users/22ami/AppData/Local/Google/Chrome/User Data");
-        //options.addArguments("--profile-directory=Default");
+
        
 
-        // 🔕 Отключаем уведомления и предложения сохранить пароль
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("profile.default_content_setting_values.notifications", 2);
         prefs.put("credentials_enable_service", false);
@@ -69,7 +65,6 @@ public class BaseTest {
         loginPage.login();
 
         System.out.println("[BaseTest] Авторизация завершена");
-        //sleep(3000); // дожидаемся завершения авторизации
 
 
     }
@@ -78,7 +73,6 @@ public class BaseTest {
     public void logout() {
         System.out.println("🔚 [BaseTest] Выход из профиля после теста");
 
-        // Клик по кнопке "меню" (аватар пользователя)
         $("[aria-label='menu']").scrollIntoView(true).shouldBe(visible).click();
         Selenide.sleep(1000);
         $(byText("Выход из профиля")).shouldBe(visible).click();

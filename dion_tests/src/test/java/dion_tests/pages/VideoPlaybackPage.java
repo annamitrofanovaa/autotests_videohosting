@@ -20,18 +20,18 @@ public class VideoPlaybackPage {
     @Step("Нажимаем кнопку Play")
     public long clickPlay() {
         playButton.shouldBe(visible).click();
-        return System.currentTimeMillis();  // возвращаем «t0»
+        return System.currentTimeMillis();  
     }
 
     @Step("Ожидаем, пока currentTime станет > 0")
     public void waitUntilPlaying() {
         for (int i = 0; i < 100; i++) {
 
-            Number ct = executeJavaScript(          // 👈 универсальный тип
+            Number ct = executeJavaScript(          
                 "return arguments[0].currentTime", video);
 
             if (ct != null && ct.doubleValue() > 0.0) {
-                return;                             // видео реально стартовало
+                return;                             
             }
             sleep(100);
         }
